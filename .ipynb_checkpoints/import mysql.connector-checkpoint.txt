@@ -1,0 +1,42 @@
+import mysql.connector 
+import streamlit as st
+mydb = mysql.connector.connect(
+    host="localhost",
+    user = "root",
+    password="Aaadd@1986",
+    database = "assignment2"
+)
+
+cursor = mydb.cursor()
+print("Connected")
+
+cursor.execute("SELECT * FROM employee")   
+rows = cursor.fetchall()                   
+
+for row in rows:
+    print(row)
+
+
+def main():
+    st.title("CRUD Operations with my SQL")
+    option = st.sidebar.selectbox("Select an Operation",("Create","Read","Update","Delete"))
+    
+    if option == "Create":
+        st.subheader("Create a Record")
+
+    elif option == "Read":
+        st.subheader("Read a Record")
+        
+    elif option == "Update":
+        st.subheader("Update a Record")
+        
+        
+    elif option == "Delete":
+        st.subheader("Delete a Record")
+        
+
+
+
+if __name__ == "__main__":
+    main()
+
